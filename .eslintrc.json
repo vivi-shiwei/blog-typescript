@@ -1,0 +1,124 @@
+{
+  // 告知eslint是否要继续从父目录寻找配置文档，true表示停止在父级目录中寻找
+  "root": true,
+  // 指定解析器
+  "parser": "@typescript-eslint/parser",
+  // 解析器选项，所有语言选项默认都是 false
+  "parserOptions": {
+    // 想要使用的 ECMAScript 版本
+    "ecmaVersion": 6,
+    // script(default)/module
+    "sourceType": "module",
+    // 想使用的额外的语言特性
+    "ecmaFeatures": {
+      // 允许在全局作用域下使用 return 语句
+      "globalReturn": true,
+      // 启用全局 strict mode
+      "impliedStrict": true,
+      // 启用 JSX
+      "jsx": true,
+      // 启用实验性的 object rest/spread properties 支持({...rest})，该选项在未来将被移除
+      "experimentalObjectRestSpread": true
+    }
+	},
+  // 环境定义了一组预定义的全局变量
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  // 指定全局变量，应对no-undef 规则的警告
+  "globals": {
+    // 可重写
+    "var1": true,
+    // 只读
+    "var2": false
+  },
+  // 使用第三方插件
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "eqeqeq": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "array-bracket-spacing":["error","always"],//是否允许非空数组里面有多余的空格
+    "arrow-parens": "error",//箭头函数用小括号括起来
+    "arrow-spacing": "error",//=>的前/后括号
+    "accessor-pairs": "off",//在对象中使用getter/setter
+    "block-scoped-var": "off",//块语句中使用var
+    "brace-style": ["warn","1tbs"],//大括号风格
+    "callback-return": "warn",//避免多次调用回调什么的
+    "camelcase": "off",//强制驼峰法命名
+    "comma-dangle": ["error"],//对象字面量项尾不能有逗号
+    "comma-spacing": "error",//逗号前后的空格
+    "comma-style": ["error", "last"],//逗号风格，换行时在行首还是行尾
+    "complexity": ["off",11],//循环复杂度
+    "computed-property-spacing": ["off"],//是否允许计算后的键名什么的
+    "consistent-return": "off",//return 后面是否允许省略
+    "consistent-this": ["error","that"],//this别名
+    "constructor-super": "error",//非派生类不能调用super，派生类必须调用super
+    "curly": ["error","all"],//必须使用 if(){} 中的{}
+    "default-case": "error",//switch语句最后必须有default
+    "dot-location": "off",//对象访问符的位置，换行的时候在行首还是行尾
+    "dot-notation": ["error",{ "allowKeywords": true }],//避免不必要的方括号
+    "eol-last": "warn",//文件以单一的换行符结束
+    "func-names": "off",//函数表达式必须有名字
+    "func-style": ["off","declaration"],//函数风格，规定只能使用函数声明/函数表达式
+    "generator-star-spacing": "off",//生成器函数*的前后空格
+    "guard-for-in": "off",//for in循环要用if语句过滤
+    "handle-callback-err": "off",//nodejs 处理错误
+    "id-length": "off",//变量名长度
+    "indent": ["error",2],//缩进风格
+    "init-declarations": "off",//声明时必须赋初值
+    "key-spacing": ["error",{ "beforeColon": false,"afterColon": true }],//对象字面量中冒号的前后空格
+    "lines-around-comment": "warn",//行前/行后备注
+    "max-depth": ["off"],//嵌套块深度
+    "max-len": ["off",80],//字符串最大长度
+    "max-nested-callbacks": ["off","error"],//回调嵌套深度
+    "max-params": ["off",3],//函数最多只能有3个参数
+    "max-statements": ["off",10],//函数内最多有几个声明
+    "new-cap": "off",//函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
+    "new-parens": "error",//new时必须加小括号
+    "newline-after-var": "off",//变量声明后是否需要空一行
+    "object-curly-spacing": ["error","always"],//大括号内是否允许不必要的空格
+    "object-shorthand": "off",//强制对象字面量缩写语法
+    "one-var": "off",//连续声明
+    "operator-assignment": ["off","always"],//赋值运算符 += -=什么的
+    "operator-linebreak": ["error","after"],//换行时运算符在行尾还是行首
+    "padded-blocks": "off",//块语句内行首行尾是否要空行
+    "prefer-const": "error",//首选const
+    "prefer-spread": "warn",//首选展开运算
+    "prefer-reflect": "off",//首选Reflect的方法
+    "quotes": ["warn", "single"],//引号类型 `` "" ''
+    "quote-props":["off"],//对象字面量中的属性名是否强制双引号
+    "radix": "error",//parseInt必须指定第二个参数
+    "id-match": "off",//命名检测
+    "require-yield": "off",//生成器函数必须有yield
+    "semi": "error",//语句强制分号结尾
+    "semi-spacing": ["error",{"before": false,"after": true}],//分号前后空格
+    "sort-vars": "off",//变量声明时排序
+    "space-after-keywords": ["off"],//关键字后面是否要空一格
+    "space-before-blocks": ["off"],//不以新行开始的块{前面要不要有空格
+    "space-before-function-paren": ["off"],//函数定义时括号前面要不要有空格
+    "space-in-parens": "error",//小括号里面要不要有空格
+    "space-infix-ops": "error",//中缀操作符周围要不要有空格
+    "space-return-throw-case": "off",//return throw case后面要不要加空格
+    "space-unary-ops": ["error",{ "words": true,"nonwords": false }],//一元运算符的前/后要不要加空格
+    "spaced-comment": "off",//注释风格要不要有空格什么的
+    "strict": "warn",//使用严格模式
+    "use-isnan": "warn",//禁止比较时使用NaN，只能用isNaN()
+    "valid-jsdoc": "off",//jsdoc规则
+    "valid-typeof": "warn",//必须使用合法的typeof的值
+    "vars-on-top": "error",//var必须放在作用域顶部
+    "wrap-iife": ["error","inside"], //立即执行函数表达式的小括号风格
+    "wrap-regex": "off",//正则表达式字面量用小括号包起来
+    "yoda": ["error","never"],//禁止尤达条件
+    "no-cond-assign": "error", //禁止在条件表达式中使用赋值语句  Bad: if(x = 0) 正确if(x == 0)
+    "no-with": "error",//禁用with
+    // "no-use-before-define": "error",//未定义前不能使用
+    "no-empty": "error",//块语句中的内容不能为空
+    "no-floating-decimal": "error",//禁止省略浮点数中的0 .5 3.
+    "no-self-compare": "error",//不能比较自身
+    "no-unexpected-multiline": "error"//避免多行表达式
+  }
+}

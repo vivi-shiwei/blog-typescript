@@ -1,0 +1,7 @@
+type Viewer {
+  id: ID!
+  username: String
+  email: String
+  gender: String
+  profilePhoto: String
+}
