@@ -5,6 +5,7 @@ import { localInitAuthentication } from 'lib/api/initAuthentication';
 import middleware from 'lib/api/middleware';
 import runMiddleware from 'lib/api/runMiddleware';
 import { addUserBySignUp } from 'db/sql/users';
+
 initPassport();
 localInitAuthentication(true);
 

@@ -41,3 +41,72 @@ export const localInitAuthentication = (isSignUp: boolean = false): void => {
   }
   ));
 };
+
+
+export const gitHubInitAuthentication = () => {
+  const GitHubStrategy = require('passport-github2').Strategy;
+
+  passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET
+  },
+    function (accessToken, refreshToken, profile, cb) {
+      const { id, displayName, username, photos } = profile
+
+      const user = {
+        github_provider_id: id,
+        username,
+        profile_photo: (!!photos && photos[0]?.value) || null
+      }
+
+      // return createOrFindUser(user, 'github_provider_id')
+      //   .then(user => {
+      //     cb(null, user)
+      //     return user
+      //   }).catch(err => {
+      //     return cb(null, err, {
+      //       message: 'Please sign in with other to create a new account.'
+      //     })
+      //   })
+    }
+  ))
+}
+
+/* 获取用户提交的信息（用于Google登录） */
+export const googleInitAuthentication = () => {
+  const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+  passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET
+  },
+    function (accessToken, refreshToken, profile, cb) {
+      const { id, emails, displayName, photos, name } = profile
+
+      let username = ''
+
+      if (displayName || name) {
+        const givenName = profile.name.givenName
+        const familyName = profile.name.familyName
+        username = `${givenName || ''}${familyName ? ` ${familyName}` : ''}`
+      }
+
+      const user = {
+        username,
+        google_provider_id: id,
+        // email: (!!emails && emails[0].value) || null,
+        profile_photo: (!!photos && photos[0]?.value) || null
+      }
+
+      // return createOrFindUser(user, 'google_provider_id')
+      //   .then(user => {
+      //     cb(null, user)
+      //     return user
+      //   }).catch(err => {
+      //     return cb(null, err, {
+      //       message: 'Please sign in with other to create a new account.'
+      //     })
+      //   })
+    }
+  ))
+}
