@@ -1,21 +1,21 @@
-import React from 'react'
+import React from 'react';
 import {
   FaUser,
   FaLock,
   FaInfoCircle
-} from 'react-icons/fa'
-import { ImSpinner2 } from 'react-icons/im'
+} from 'react-icons/fa';
+import { ImSpinner2 } from 'react-icons/im';
 import {
   Formik,
   Form,
   Field,
   FormikHelpers,
   ErrorMessage
-} from 'formik'
-import md5 from 'md5'
-import fetch from 'node-fetch'
-import { useRouter } from 'next/router'
-import SocialMedis from './socialMedis'
+} from 'formik';
+import md5 from 'md5';
+import fetch from 'node-fetch';
+import { useRouter } from 'next/router';
+import SocialMedis from './socialMedis';
 
 interface FormInitialValues {
   username: string;
@@ -39,7 +39,7 @@ const validateEmail = (value) => {
     error = '无效的邮箱地址';
   }
   return error;
-}
+};
 
 const SignUp: React.FC = () => {
   const router = useRouter();
@@ -60,34 +60,34 @@ const SignUp: React.FC = () => {
             email: values.email?.trim()
           })
         }).then(async (states) => {
-          const { state, error } = await states?.json()
+          const { state, error } = await states?.json();
 
           if (state) {
-            router.replace('/personal-info')
+            router.replace('/personal-info');
           } else {
-            let errorInfo: string = ''
+            let errorInfo: string = '';
 
             switch (error.code) {
-              case 4001:
-                errorInfo = '该账户已存在';
-                break;
-              default:
-                errorInfo = '注册失败';
-                break;
+            case 4001:
+              errorInfo = '该账户已存在';
+              break;
+            default:
+              errorInfo = '注册失败';
+              break;
             }
 
-            setFieldError('error_info', errorInfo)
-            setSubmitting(false)
+            setFieldError('error_info', errorInfo);
+            setSubmitting(false);
           }
-        }).catch(err => {
-          console.log('> error:', err)
-          setFieldError('error_info', '注册失败')
-          setSubmitting(false)
-        })
+        }).catch((err) => {
+          console.log('> error:', err);
+          setFieldError('error_info', '注册失败');
+          setSubmitting(false);
+        });
       }}
     >
       {({ isSubmitting, values, setSubmitting }) => (
-        <Form className='sign-up-form'>
+        <Form className='sign-up-form flex justify-center items-center flex-col overflow-hidden py-3 p-20'>
           <h2 className='title'>注&emsp;册</h2>
           <Field name='username'>
             {({ field, form: { touched, errors }, meta }) => (
@@ -117,12 +117,12 @@ const SignUp: React.FC = () => {
           </Field>
 
           <div className='error-container'>
-            <ErrorMessage name="email" render={msg => (
+            <ErrorMessage name="email" render={(msg) => (
               <div className='error-info'>
                 <FaInfoCircle />{msg}
               </div>
             )} />
-            <ErrorMessage name="error_info" render={msg => (
+            <ErrorMessage name="error_info" render={(msg) => (
               <div className='error-info'>
                 <FaInfoCircle />{msg}
               </div>
@@ -131,7 +131,7 @@ const SignUp: React.FC = () => {
           <button
             type='submit'
             disabled={!!isSubmitting}
-            className={`btn solid ${isSubmitting ? 'disabled' : ''}`}
+            className={`btn bg-transparent border-none w-36 h-12 rounded-full cursor-pointer uppercase font-semibold my-2.5 mx-0${isSubmitting ? 'disabled' : ''}`}
           >
             {!isSubmitting && 'Sign up'}
             {!!isSubmitting && <ImSpinner2 />}
@@ -141,7 +141,7 @@ const SignUp: React.FC = () => {
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
