@@ -7,7 +7,7 @@ type PanelsProps = {
 const Panels: React.FC<PanelsProps> = ({ container }) => {
   return (
     <div className='panels-container absolute w-full h-full top-0 left-0 grid grid-cols-2'>
-      <div className='panel left-panel'>
+      <div className='panel flex-row justify-around items-center py-8 flex text-center lg:flex-col lg:items-end left-panel'>
         <div className='content'>
           <h3>从记录开始</h3>
           <p className='panel-text'>
@@ -28,7 +28,7 @@ const Panels: React.FC<PanelsProps> = ({ container }) => {
         <img src='svg/log.svg' className='image' alt='' />
       </div>
 
-      <div className='panel right-panel'>
+      <div className='panel flex-row justify-around items-center py-8 flex text-center lg:flex-col lg:items-end right-panel'>
         <div className='content'>
           <h3>记录新的开始</h3>
           <p className='panel-text'>

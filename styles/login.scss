@@ -4,10 +4,6 @@
 }
 
 .login-container {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
 
   &.animal {
     &::before{
@@ -185,11 +181,6 @@
 
   .panels-container{
     .panel{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: space-around;
-      text-align: center;
       z-index: 7;
     }
 
@@ -296,7 +287,6 @@
 @media(max-width: 870px){
   .login-container{
     min-height: 700px;
-    height: 100vh;
 
     &::before{
       width: 1500px;
@@ -310,7 +300,6 @@
     }
 
     .signin-signup{
-      // width: 100%;
       left: 50%;
       top: 96%;
       transform: translate(-50%, -100%);
@@ -322,10 +311,8 @@
       grid-template-rows: 1fr 2fr 1fr;
 
       .panel{
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        padding: 2rem 8%;
+        padding-top: 8%;
+        padding-bottom: 8%;
       }
 
       .content{
